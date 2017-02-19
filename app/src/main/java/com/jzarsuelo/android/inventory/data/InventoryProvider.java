@@ -1,6 +1,7 @@
 package com.jzarsuelo.android.inventory.data;
 
 import android.content.ContentProvider;
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
@@ -83,7 +84,9 @@ public class InventoryProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(Uri uri, ContentValues contentValues) {
-        return null;
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        long id = db.insert(InventoryEntry.TABLE_NAME, null, contentValues);
+        return ContentUris.withAppendedId(uri, id);
     }
 
     @Override
