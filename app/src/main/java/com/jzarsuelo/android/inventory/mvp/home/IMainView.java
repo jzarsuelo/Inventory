@@ -9,6 +9,4 @@ public interface IMainView {
     void showListView();
     void navigateToDetailView();
     void navigateToDetailView(long id);
-    void deleteAllData();
-    void insertDummy();
 }

@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements IMainView,
 
         mCursorAdapter = new InventoryCursorAdapter(this, null);
         mInventoryListView.setAdapter(mCursorAdapter);
+
+        mPresenter = new MainPresenter(this);
     }
 
     @Override
@@ -82,10 +84,10 @@ public class MainActivity extends AppCompatActivity implements IMainView,
 
         switch (id) {
             case R.id.action_insert_dummy:
-                insertDummy();
+                mPresenter.insertDummyData();
                 return true;
             case R.id.action_delete_all:
-                deleteAllData();
+                mPresenter.deleteAll();
                 return true;
         }
 
@@ -112,21 +114,6 @@ public class MainActivity extends AppCompatActivity implements IMainView,
     @Override
     public void navigateToDetailView(long id) {
 
-    }
-
-    @Override
-    public void deleteAllData() {
-        getContentResolver().delete(InventoryEntry.CONTENT_URI, null, null);
-    }
-
-    @Override
-    public void insertDummy() {
-        ContentValues values = new ContentValues();
-        values.put(InventoryEntry.COLUMN_PRODUCT_NAME, "Box");
-        values.put(InventoryEntry.COLUMN_PRICE, "3");
-        values.put(InventoryEntry.COLUMN_QUANTITY, 10);
-
-        getContentResolver().insert(InventoryEntry.CONTENT_URI, values);
     }
 
     @Override

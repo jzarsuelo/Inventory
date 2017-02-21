@@ -6,4 +6,6 @@ package com.jzarsuelo.android.inventory.mvp.home;
 
 public interface IMainPresenter {
     void loadData();
+    void deleteAll();
+    void insertDummyData();
 }
