@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements IMainView,
                 insertDummy();
                 return true;
             case R.id.action_delete_all:
-                // TODO Delete all items
+                deleteAllData();
                 return true;
         }
 
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements IMainView,
 
     @Override
     public void deleteAllData() {
-
+        getContentResolver().delete(InventoryEntry.CONTENT_URI, null, null);
     }
 
     @Override
