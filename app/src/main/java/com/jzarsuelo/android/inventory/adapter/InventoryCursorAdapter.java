@@ -1,4 +1,4 @@
-package com.jzarsuelo.android.inventory;
+package com.jzarsuelo.android.inventory.adapter;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -8,16 +8,17 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
+import com.jzarsuelo.android.inventory.R;
 import com.jzarsuelo.android.inventory.data.InventoryContract.InventoryEntry;
 
 /**
- * {@link InvetoryCursorAdapter} is an adapter that uses a {@link Cursor}
+ * {@link InventoryCursorAdapter} is an adapter that uses a {@link Cursor}
  * of invetory data as data source. This class creates a layout for the items
  * in the ListView.
  */
-public class InvetoryCursorAdapter extends CursorAdapter {
+public class InventoryCursorAdapter extends CursorAdapter {
 
-    public InvetoryCursorAdapter(Context context, Cursor c) {
+    public InventoryCursorAdapter(Context context, Cursor c) {
         super(context, c, 0);
     }
 

@@ -9,7 +9,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.Animation;
@@ -17,7 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ListView;
 
 import com.jzarsuelo.android.inventory.DetailActivity;
-import com.jzarsuelo.android.inventory.InvetoryCursorAdapter;
+import com.jzarsuelo.android.inventory.adapter.InventoryCursorAdapter;
 import com.jzarsuelo.android.inventory.R;
 import com.jzarsuelo.android.inventory.data.InventoryContract.InventoryEntry;
 
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements IMainView,
 
     private IMainPresenter mPresenter;
 
-    private InvetoryCursorAdapter mCursorAdapter;
+    private InventoryCursorAdapter mCursorAdapter;
 
     public static final int INVENTORY_LOADER = 1;
 
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements IMainView,
         mScaleFabIn = AnimationUtils.loadAnimation(this, R.anim.scale_fab_in);
         mScaleFabOut = AnimationUtils.loadAnimation(this, R.anim.scale_fab_out);
 
-        mCursorAdapter = new InvetoryCursorAdapter(this, null);
+        mCursorAdapter = new InventoryCursorAdapter(this, null);
         mInventoryListView.setAdapter(mCursorAdapter);
     }
 
