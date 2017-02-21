@@ -10,4 +10,5 @@ public interface IMainView {
     void navigateToDetailView();
     void navigateToDetailView(long id);
     void deleteAllData();
+    void insertDummy();
 }
