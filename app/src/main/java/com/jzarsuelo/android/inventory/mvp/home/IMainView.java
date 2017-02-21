@@ -8,5 +8,5 @@ public interface IMainView {
     void showEmptyView();
     void showListView();
     void navigateToDetailView();
-    void navigateToDetailView(long id);
+    void navigateToDetailView(int position);
 }

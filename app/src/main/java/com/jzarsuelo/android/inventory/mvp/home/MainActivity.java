@@ -1,11 +1,12 @@
 package com.jzarsuelo.android.inventory.mvp.home;
 
 import android.app.LoaderManager;
-import android.content.ContentValues;
+import android.content.ContentUris;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -16,13 +17,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.ListView;
 
 import com.jzarsuelo.android.inventory.DetailActivity;
-import com.jzarsuelo.android.inventory.adapter.InventoryCursorAdapter;
 import com.jzarsuelo.android.inventory.R;
+import com.jzarsuelo.android.inventory.adapter.InventoryCursorAdapter;
 import com.jzarsuelo.android.inventory.data.InventoryContract.InventoryEntry;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnItemClick;
 
 public class MainActivity extends AppCompatActivity implements IMainView,
         LoaderManager.LoaderCallbacks<Cursor> {
@@ -111,9 +113,16 @@ public class MainActivity extends AppCompatActivity implements IMainView,
         startActivity(i);
     }
 
+    @OnItemClick(R.id.inventory_list)
     @Override
-    public void navigateToDetailView(long id) {
+    public void navigateToDetailView(int position) {
+        long id = mCursorAdapter.getItemId(position);
+        Uri uri = ContentUris.withAppendedId(InventoryEntry.CONTENT_URI, id);
 
+        Intent i = new Intent(this, DetailActivity.class);
+        i.setData(uri);
+
+        startActivity(i);
     }
 
     @Override
