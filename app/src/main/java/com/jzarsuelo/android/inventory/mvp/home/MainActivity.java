@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.Animation;
@@ -16,6 +17,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ListView;
 
 import com.jzarsuelo.android.inventory.DetailActivity;
+import com.jzarsuelo.android.inventory.InvetoryCursorAdapter;
 import com.jzarsuelo.android.inventory.R;
 import com.jzarsuelo.android.inventory.data.InventoryContract.InventoryEntry;
 
@@ -26,6 +28,7 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity implements IMainView,
         LoaderManager.LoaderCallbacks<Cursor> {
 
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
     @BindView(R.id.add_fab)
     FloatingActionButton mFab;
 
@@ -37,15 +40,23 @@ public class MainActivity extends AppCompatActivity implements IMainView,
 
     private IMainPresenter mPresenter;
 
+    private InvetoryCursorAdapter mCursorAdapter;
+
+    public static final int INVENTORY_LOADER = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        getLoaderManager().initLoader(INVENTORY_LOADER, null, this);
+
         mScaleFabIn = AnimationUtils.loadAnimation(this, R.anim.scale_fab_in);
         mScaleFabOut = AnimationUtils.loadAnimation(this, R.anim.scale_fab_out);
 
+        mCursorAdapter = new InvetoryCursorAdapter(this, null);
+        mInventoryListView.setAdapter(mCursorAdapter);
     }
 
     @Override
@@ -127,11 +138,11 @@ public class MainActivity extends AppCompatActivity implements IMainView,
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-
+        mCursorAdapter.swapCursor(data);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-
+        mCursorAdapter.swapCursor(null);
     }
 }
