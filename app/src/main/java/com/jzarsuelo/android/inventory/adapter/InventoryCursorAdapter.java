@@ -43,7 +43,7 @@ public class InventoryCursorAdapter extends CursorAdapter {
         TextView priceText = (TextView) view.findViewById(R.id.price_text);
         priceText.setText( String.valueOf(price) );
 
-        TextView quantityText = (TextView) view.findViewById(R.id.price_text);
+        TextView quantityText = (TextView) view.findViewById(R.id.quantity_text);
         quantityText.setText( String.valueOf(quantity) );
     }
 }
