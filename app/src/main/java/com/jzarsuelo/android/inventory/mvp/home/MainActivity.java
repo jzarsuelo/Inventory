@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.jzarsuelo.android.inventory.DetailActivity;
@@ -30,11 +31,15 @@ public class MainActivity extends AppCompatActivity implements IMainView,
         LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
+
     @BindView(R.id.add_fab)
     FloatingActionButton mFab;
 
     @BindView(R.id.inventory_list)
     ListView mInventoryListView;
+
+    @BindView(R.id.empty_list_view)
+    LinearLayout mEmptyListView;
 
     private Animation mScaleFabIn;
     private Animation mScaleFabOut;
@@ -58,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements IMainView,
 
         mCursorAdapter = new InventoryCursorAdapter(this, null);
         mInventoryListView.setAdapter(mCursorAdapter);
+        mInventoryListView.setEmptyView(mEmptyListView);
 
         mPresenter = new MainPresenter(this);
     }

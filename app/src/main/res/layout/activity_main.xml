@@ -16,6 +16,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <LinearLayout
+        android:id="@+id/empty_list_view"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:src="@drawable/inbox_tray"
+            android:alpha=".75"/>
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="14sp"
+            android:textColor="@color/textColorSecondary"
+            android:text="@string/main_empty_list"
+            tools:text="@string/main_empty_list"/>
+    </LinearLayout>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_fab"
         android:layout_width="wrap_content"
