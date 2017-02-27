@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DetailActivity"
+            android:name=".mvp.detail.DetailActivity"
             android:parentActivityName=".mvp.home.MainActivity">
         </activity>
     </application>

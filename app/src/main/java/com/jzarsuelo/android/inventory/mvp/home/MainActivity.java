@@ -17,7 +17,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.jzarsuelo.android.inventory.DetailActivity;
+import com.jzarsuelo.android.inventory.mvp.detail.DetailActivity;
 import com.jzarsuelo.android.inventory.R;
 import com.jzarsuelo.android.inventory.adapter.InventoryCursorAdapter;
 import com.jzarsuelo.android.inventory.data.InventoryContract.InventoryEntry;

@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Inventory</string>
     <string name="main_empty_list">The list is empty.</string>
+    <string name="text_price">Price: $1%s</string>
+    <string name="text_qty">Qty: $1%s</string>
+    <string name="text_sales">Sales: $1%s</string>
+    <string name="text_transaction">Transaction: $1%s</string>
+    <string name="save">Save</string>
+
+
+    <string name="value_sale">Sale</string>
+    <string name="value_restock">Restock</string>
+    <string name="hint_transaction_quantity">Enter transaction quantity</string>
 </resources>
